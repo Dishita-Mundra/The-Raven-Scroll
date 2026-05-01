@@ -1,0 +1,144 @@
+/* --- GLOBAL THEME & CUSTOM CURSOR --- */
+* {
+  margin: 0; padding: 0; box-sizing: border-box;
+  cursor: none !important;
+}
+
+body {
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+  transition: background-color 0.5s, color 0.5s;
+}
+
+/* --- DARK THEME --- */
+body.dark {
+  background-color: #0d0d0d;
+  color: #f4e4bc;
+}
+body.dark .parchment-card {
+  background: linear-gradient(135deg, rgba(30,30,30,0.95) 0%, rgba(15,15,15,0.95) 100%);
+  border: 1px solid #d4af37;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+}
+
+/* --- BOLD HEADINGS & ATTRACTION --- */
+h2 {
+  font-weight: 900 !important;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8); /* 3D Shadow effect */
+}
+
+/* Navbar Title Attraction */
+.title-glow {
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+  color: #d4af37;
+  font-family: 'Cinzel', serif;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 1), 0 0 15px rgba(212, 175, 55, 0.6); /* Chamakta hua shadow */
+}
+
+/* CUSTOM CURSOR */
+.cursor-dot {
+  width: 4px; height: 4px; background-color: #d4af37;
+  position: fixed; border-radius: 50%; pointer-events: none;
+  z-index: 9999; transform: translate(-50%, -50%);
+}
+.cursor-ring {
+  width: 30px; height: 30px; border: 2px solid #d4af37;
+  position: fixed; border-radius: 50%; pointer-events: none;
+  z-index: 9998; transform: translate(-50%, -50%);
+  transition: width 0.1s, height 0.1s;
+}
+
+/* CHOTA ROTATING GOLA */
+.title-container {
+  display: flex; align-items: center; gap: 10px; position: relative;
+}
+.small-gola {
+  position: absolute; left: -5px; width: 38px; height: 38px;
+  border: 1px dashed #d4af37; border-radius: 50%;
+  animation: spinSlow 8s linear infinite; z-index: 1;
+}
+@keyframes spinSlow { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+/* RUNNING HORSE LOADER */
+.horse-loader {
+  font-size: 3rem; display: inline-block; animation: gallop 0.8s infinite alternate;
+}
+@keyframes gallop { 0% { transform: translateY(0) rotate(-10deg); } 100% { transform: translateY(-15px) rotate(10deg); } }
+
+.parchment-card {
+  padding: 20px; border-radius: 8px; transition: transform 0.3s ease; position: relative; z-index: 5; 
+}
+
+/* --- CLICK BLOOD SPLASH ANIMATION --- */
+.blood-splash {
+  position: fixed;
+  width: 15px; height: 15px;
+  background-color: #8b0000;
+  border-radius: 50% 50% 50% 0;
+  transform: translate(-50%, -50%) rotate(-45deg) scale(0);
+  pointer-events: none;
+  z-index: 9999;
+  animation: splashAnim 0.4s ease-out forwards;
+}
+@keyframes splashAnim {
+  0% { transform: translate(-50%, -50%) rotate(-45deg) scale(0.5); opacity: 1; }
+  100% { transform: translate(-50%, -10px) rotate(-45deg) scale(1.5); opacity: 0; }
+}
+
+/* --- EPIC GOT THEME BACKGROUND: FIRE AND ICE --- */
+.snow-container {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none; z-index: -1;
+  background-color: #050505; /* Deep dark scary night */
+  background-image: 
+    radial-gradient(circle at 50% 100%, rgba(139, 0, 0, 0.25) 0%, transparent 60%),
+    radial-gradient(circle at 50% 0%, rgba(10, 25, 50, 0.4) 0%, transparent 60%);
+}
+
+/* Ice: Falling Snow */
+.snow-container::before {
+  content: "";
+  position: absolute;
+  top: -100vh; left: 0; right: 0; bottom: 0;
+  background-image: 
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 2px, transparent 2px);
+  background-size: 100px 100px, 200px 200px;
+  background-position: 0 0, 50px 50px;
+  animation: epicSnow 15s linear infinite;
+  opacity: 0.5;
+}
+
+/* Fire: Rising Embers (Chingari) */
+.snow-container::after {
+  content: "";
+  position: absolute;
+  top: 0; left: -100vw; right: 0; bottom: -100vh;
+  background-image: 
+    radial-gradient(circle, #ff4500 2px, transparent 3px),
+    radial-gradient(circle, #ffa500 1px, transparent 2px);
+  background-size: 150px 150px, 250px 250px;
+  background-position: 0 0, 75px 75px;
+  animation: epicEmbers 20s linear infinite;
+  opacity: 0.6;
+  filter: blur(1px);
+}
+
+@keyframes epicSnow {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes epicEmbers {
+  0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.8; }
+  90% { opacity: 0.8; }
+  100% { transform: translateY(0) translateX(50px); opacity: 0; }
+}
