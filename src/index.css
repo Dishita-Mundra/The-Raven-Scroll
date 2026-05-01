@@ -142,3 +142,60 @@ h2 {
   90% { opacity: 0.8; }
   100% { transform: translateY(0) translateX(50px); opacity: 0; }
 }
+
+/* =========================================
+   MOBILE RESPONSIVENESS (PHONES & TABLETS)
+========================================= */
+@media screen and (max-width: 768px) {
+  /* Mobile me custom cursor hata do (Phones me touch hota hai) */
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-ring, .blood-splash { display: none !important; }
+
+  /* Navbar Fixes (Items ko line me laane ke liye) */
+  nav {
+    flex-direction: column !important;
+    padding: 15px 10px !important;
+    text-align: center;
+  }
+  nav .title-container { 
+    margin-bottom: 10px; 
+    justify-content: center;
+  }
+  nav .title-glow { font-size: 1.5rem !important; }
+  nav > div {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+  nav a { font-size: 0.95rem !important; }
+
+  /* Global Spacing for Mobile */
+  main { padding: 10px !important; }
+  .parchment-card { padding: 20px 15px !important; }
+  h2 { font-size: 1.8rem !important; text-align: center; }
+  
+  /* Home Page Memory Card Fix */
+  .parchment-card > div[style*="borderBottom"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+  .parchment-card h3 { font-size: 1.5rem !important; }
+
+  /* Forms Fix (Date/House aur Buttons ko upar-neeche stack karna) */
+  form > div[style*="display: flex"] {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  /* Upload/URL Buttons width full for touch */
+  form > div > button { 
+    width: 100% !important; 
+  }
+  
+  /* Live Preview Image in mobile */
+  img[alt="Preview"], img[alt="Profile"] {
+    max-width: 100%;
+    height: auto;
+  }
+}
